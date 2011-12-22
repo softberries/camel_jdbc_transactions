@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+  <transfer>
+    <sender>Major Clanger</sender>
+    <receiver>Tiny Clanger</receiver>
+    <amount>200</amount>
+  </transfer>
+</transaction>
