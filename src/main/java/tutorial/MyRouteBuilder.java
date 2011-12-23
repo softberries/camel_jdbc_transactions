@@ -28,10 +28,12 @@ public class MyRouteBuilder extends SpringRouteBuilder {
 
 	public void configure() {
 		//handle exceptions and log them
-		onException(Exception.class)
-	    .handled(true).maximumRedeliveries(0)
-	    .beanRef("accountService","dumpTable")
-	    .to("log:error processing message");
+		onException(IllegalArgumentException.class).
+        maximumRedeliveries(0)
+        .handled(true)
+        .beanRef("accountService", "dumpTable")
+        .to("file:target/messages?fileName=deadLetters.xml&fileExist=Append")
+        .markRollbackOnly();
 
 		//our route definition
 		//noop option - if true, the file is not moved or deleted in any way
